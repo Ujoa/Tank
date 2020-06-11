@@ -113,6 +113,13 @@ public class CreateJobRequest implements Serializable {
     public String getStopBehavior() {
         return stopBehavior;
     }
+
+    /**
+     * @return the stopBehavior
+     */
+    public String getVmInstance() {
+        return vmInstance;
+    }
     
     /**
      * @param jobRegions
