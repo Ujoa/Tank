@@ -1,0 +1,6 @@
+java.lang.ClassNotFoundException: org.apache.catalina.startup.Catalina
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:382)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	at org.apache.catalina.startup.Bootstrap.init(Bootstrap.java:216)
+	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:391)

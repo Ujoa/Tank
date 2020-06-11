@@ -73,6 +73,7 @@ import com.intuit.tank.dao.ProjectDao;
 import com.intuit.tank.dao.ScriptDao;
 import com.intuit.tank.dao.WorkloadDao;
 import com.intuit.tank.harness.StopBehavior;
+import com.intuit.tank.harness.VmInstance;
 import com.intuit.tank.project.BaseEntity;
 import com.intuit.tank.project.DataFile;
 import com.intuit.tank.project.EntityVersion;
@@ -395,15 +396,21 @@ public class AutomationServiceV1 implements AutomationService {
 
 	private void buildJobConfiguration(@Nonnull CreateJobRequest request, Project project) {
 		JobConfiguration jobConfiguration = project.getWorkloads().get(0).getJobConfiguration();
+
 		if (StringUtils.isNotEmpty(request.getRampTime())) {
             jobConfiguration.setRampTimeExpression(request.getRampTime());
-        }
+		}
+		
 		if (StringUtils.isNotEmpty(request.getSimulationTime())) {
             jobConfiguration.setSimulationTimeExpression(request.getSimulationTime());
-        }
+		}
+		
 		jobConfiguration.setUserIntervalIncrement(request.getUserIntervalIncrement());
 		jobConfiguration.setStopBehavior(StringUtils.isNotEmpty(request.getStopBehavior())
-                ? request.getStopBehavior() : StopBehavior.END_OF_SCRIPT_GROUP.getDisplay());
+				? request.getStopBehavior() : StopBehavior.END_OF_SCRIPT_GROUP.getDisplay());
+				
+		jobConfiguration.setVmInstanceType(StringUtils.isNotEmpty(request.getVmInstance())
+				? request.getVmInstance()	: VmInstance.FIRST_TIER.getDisplay());
 
 		boolean hasSimTime = jobConfiguration.getSimulationTime() > 0
                 || (StringUtils.isNotBlank(request.getSimulationTime())
@@ -524,6 +531,7 @@ public class AutomationServiceV1 implements AutomationService {
 		jobInstance.setLocation(jc.getLocation());
 		jobInstance.setLoggingProfile(jc.getLoggingProfile());
 		jobInstance.setStopBehavior(jc.getStopBehavior());
+		jobInstance.setVmInstanceType(jc.getVmInstanceType());
 		jobInstance.setReportingMode(jc.getReportingMode());
 		jobInstance.getVariables().putAll(jc.getVariables());
 		// set version info
@@ -598,6 +606,7 @@ public class AutomationServiceV1 implements AutomationService {
 		jobInstance.setLocation(jc.getLocation());
 		jobInstance.setLoggingProfile(jc.getLoggingProfile());
 		jobInstance.setStopBehavior(jc.getStopBehavior());
+		jobInstance.setVmInstanceType(jc.getVmInstanceType());
 		jobInstance.setReportingMode(jc.getReportingMode());
 		jobInstance.getVariables().putAll(jc.getVariables());
 		// set version info

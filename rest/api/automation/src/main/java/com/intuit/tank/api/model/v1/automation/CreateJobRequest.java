@@ -23,6 +23,7 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import com.intuit.tank.harness.StopBehavior;
+import com.intuit.tank.harness.VmInstance;
 
 /**
  * 
@@ -51,6 +52,9 @@ public class CreateJobRequest implements Serializable {
     
     @XmlElement(name="stopBehavior")
     private String stopBehavior = StopBehavior.END_OF_TEST.getDisplay();
+
+    @XmlElement(name="vmInstance")
+    private String vmInstance = VmInstance.FIRST_TIER.getDisplay();
     
     @XmlElement(name="jobRegions")
     private Set<CreateJobRegion> jobRegions = new HashSet<CreateJobRegion>();
@@ -109,6 +113,13 @@ public class CreateJobRequest implements Serializable {
      */
     public String getStopBehavior() {
         return stopBehavior;
+    }
+
+    /**
+     * @return the vmInstance
+     */
+    public String getVmInstance() {
+        return vmInstance;
     }
     
     /**
