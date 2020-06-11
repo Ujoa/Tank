@@ -115,7 +115,7 @@ public class CreateJobRequest implements Serializable {
     }
 
     /**
-     * @return the stopBehavior
+     * @return the vmInstance
      */
     public String getVmInstance() {
         return vmInstance;
