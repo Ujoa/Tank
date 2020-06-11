@@ -51,6 +51,12 @@ public class CreateJobRequest implements Serializable {
     
     @XmlElement(name="stopBehavior")
     private String stopBehavior = StopBehavior.END_OF_TEST.getDisplay();
+<<<<<<< Updated upstream
+=======
+
+    @XmlElement(name="vmInstance")
+    private String vmInstance;
+>>>>>>> Stashed changes
     
     @XmlElement(name="jobRegions")
     private Set<CreateJobRegion> jobRegions = new HashSet<CreateJobRegion>();

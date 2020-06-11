@@ -403,7 +403,13 @@ public class AutomationServiceV1 implements AutomationService {
         }
 		jobConfiguration.setUserIntervalIncrement(request.getUserIntervalIncrement());
 		jobConfiguration.setStopBehavior(StringUtils.isNotEmpty(request.getStopBehavior())
+<<<<<<< Updated upstream
                 ? request.getStopBehavior() : StopBehavior.END_OF_SCRIPT_GROUP.getDisplay());
+=======
+				? request.getStopBehavior() : StopBehavior.END_OF_SCRIPT_GROUP.getDisplay());
+				
+		jobConfiguration.setVmInstanceType(request.getVmInstance());
+>>>>>>> Stashed changes
 
 		boolean hasSimTime = jobConfiguration.getSimulationTime() > 0
                 || (StringUtils.isNotBlank(request.getSimulationTime())
