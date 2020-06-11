@@ -409,6 +409,7 @@ public class AutomationServiceV1 implements AutomationService {
 				? request.getStopBehavior() : StopBehavior.END_OF_SCRIPT_GROUP.getDisplay());
 				
 		jobConfiguration.setVmInstanceType(request.getVmInstance());
+		jobConfiguration.setNumUsersPerAgent(request.getNumUsersPerAgent());
 
 		boolean hasSimTime = jobConfiguration.getSimulationTime() > 0
                 || (StringUtils.isNotBlank(request.getSimulationTime())
@@ -530,6 +531,7 @@ public class AutomationServiceV1 implements AutomationService {
 		jobInstance.setLoggingProfile(jc.getLoggingProfile());
 		jobInstance.setStopBehavior(jc.getStopBehavior());
 		jobInstance.setVmInstanceType(jc.getVmInstanceType());
+		jobInstance.setNumUsersPerAgent(jc.getNumUsersPerAgent());
 		jobInstance.setReportingMode(jc.getReportingMode());
 		jobInstance.getVariables().putAll(jc.getVariables());
 		// set version info
@@ -605,6 +607,7 @@ public class AutomationServiceV1 implements AutomationService {
 		jobInstance.setLoggingProfile(jc.getLoggingProfile());
 		jobInstance.setStopBehavior(jc.getStopBehavior());
 		jobInstance.setVmInstanceType(jc.getVmInstanceType());
+		jobInstance.setNumUsersPerAgent(jc.getNumUsersPerAgent());
 		jobInstance.setReportingMode(jc.getReportingMode());
 		jobInstance.getVariables().putAll(jc.getVariables());
 		// set version info
